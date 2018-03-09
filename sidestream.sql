@@ -1,7 +1,7 @@
 #standardSQL
 select
   --ROW_NUMBER() OVER() as row,
-  case 
+  case
   when _PARTITIONTIME = TIMESTAMP("2018-01-26 00:00:00") THEN '5w'
   when _PARTITIONTIME = TIMESTAMP("2018-02-02 00:00:00") THEN '4w'
   when _PARTITIONTIME = TIMESTAMP("2018-02-09 00:00:00") THEN '3w'
@@ -15,11 +15,11 @@ select
   8 * (web100_log_entry.snap.HCThruOctetsAcked /
     (web100_log_entry.snap.SndLimTimeRwin +
     web100_log_entry.snap.SndLimTimeCwnd +
-    web100_log_entry.snap.SndLimTimeSnd)) as rate_mbps  
+    web100_log_entry.snap.SndLimTimeSnd)) as rate_mbps
 from
   `measurement-lab.public.sidestream`
 where
-      (_PARTITIONTIME = TIMESTAMP("2018-01-26 00:00:00") 
+      (_PARTITIONTIME = TIMESTAMP("2018-01-26 00:00:00")
     OR _PARTITIONTIME = TIMESTAMP("2018-02-02 00:00:00")
     OR _PARTITIONTIME = TIMESTAMP("2018-02-09 00:00:00")
     OR _PARTITIONTIME = TIMESTAMP("2018-02-16 00:00:00")

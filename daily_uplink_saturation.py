@@ -91,7 +91,7 @@ for r, siter in enumerate(sites):
                 ds = ds_sites[ (ds_sites['hostname'].str.contains(h)) ]
                 axes[r][c].plot_date(
                     dates.epoch2num(ds['ts']),
-                    ds['uplink_saturation_500'] / 8640,
+                    100 * ds['uplink_saturation_500'] / 8640,
                     ls='-', ms=0, label=h[6:11])
 
             axes[r][c].set_title(site)
@@ -100,5 +100,5 @@ for r, siter in enumerate(sites):
             axes[r][c].grid(color='#dddddd')
             axes[r][c].legend(loc=2, fontsize='x-small', ncol=2)
 
-fig.suptitle('Daily Percentile Rates')
+fig.suptitle('Daily Uplink Saturation @ 500 Mbps')
 plt.show()
